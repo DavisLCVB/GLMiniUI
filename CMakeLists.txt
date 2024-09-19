@@ -11,9 +11,11 @@ set(EXE_NAME "demo")
 
 find_package(GLUT REQUIRED)
 find_package(Freetype REQUIRED)
+find_package(OpenGL REQUIRED)
 
 link_directories(${GLUT_LIBRARY_DIRS})
 link_directories(${FREETYPE_LIBRARY_DIRS})
+link_directories(${OPENGL_LIBRARY_DIRS})
 
 set(SOURCES
     source/label.cpp
@@ -27,8 +29,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ${FREETYPE_INCLUDE_DIRS}
     ${INCLUDE_DIR}
 )
-target_link_libraries(${PROJECT_NAME} ${GLUT_LIBRARIES} ${FREETYPE_LIBRARIES} opengl32)
-
+target_link_libraries(${PROJECT_NAME} ${GLUT_LIBRARIES} ${FREETYPE_LIBRARIES} ${OPENGL_LIBRARIES})
 
 add_executable(${EXE_NAME} examples/demo.cpp)
 target_include_directories(${EXE_NAME} PRIVATE

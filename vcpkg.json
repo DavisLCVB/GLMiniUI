@@ -1,6 +1,7 @@
 {
   "dependencies": [
     "freeglut",
-    "freetype"
+    "freetype",
+    "opengl"
   ]
 }
