@@ -222,7 +222,7 @@ int main(int argc, char* argv[]) {
   uint16_t screenHeight = glutGet(GLUT_SCREEN_HEIGHT);
   glutInitWindowPosition((screenWidth - arch::Window::width()) / 2,
                          (screenHeight - arch::Window::height()) / 2);
-  glutCreateWindow("Graphics");
+  glutCreateWindow("GLMiniUI - Demo");
   init();
   glutDisplayFunc(display);
   glutReshapeFunc(reshape);
