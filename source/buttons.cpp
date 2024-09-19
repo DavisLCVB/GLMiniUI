@@ -1,6 +1,7 @@
 #include "buttons.hpp"
 #include <cmath>
 #include <iostream>
+#include <mutex>
 #include "constants.hpp"
 
 namespace arch {
@@ -188,13 +189,11 @@ void Button::_drawText() const {
   label_.draw();
 }
 
-std::unique_ptr<ButtonManager> ButtonManager::_instance = nullptr;
-
 ButtonManager& ButtonManager::getInstance() {
-  if (!_instance) {
-    _instance.reset(new ButtonManager());
-  }
-  return *_instance;
+  static std::unique_ptr<ButtonManager> instance;
+  static std::once_flag onceFlag;
+  std::call_once(onceFlag, [&]() { instance.reset(new ButtonManager); });
+  return *instance;
 }
 
 void ButtonManager::addButton(const std::string& name, const Button& button) {

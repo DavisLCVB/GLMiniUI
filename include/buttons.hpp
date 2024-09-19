@@ -2,6 +2,7 @@
 #include <GL/glut.h>
 #include <functional>
 #include <memory>
+#include <mutex>
 #include "label.hpp"
 #include "utils.hpp"
 
@@ -65,7 +66,6 @@ class ButtonManager {
   auto mouseRelease(int x, int y) -> void;
 
  private:
-  static std::unique_ptr<ButtonManager> _instance;
   std::function<void(const std::string&, int x, int y)> _mouseEnterFunc{
       [](const std::string&, int, int) {
       }};
